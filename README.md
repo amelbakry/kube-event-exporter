@@ -20,7 +20,7 @@ This Application will listen to live events from the api server and publish them
  - To apply filter create a yaml file with the name "eventRules.yaml" and apply your rules
  - You can add Include and Exclude rules together but better to apply one of them only.
  - Do not create "eventRules.yaml" if you need all events to be shipped/exported.
-   In the value field, you can use string or a list
+ - In the value field, you can use string or a list
   - Examples:
     - Include means include only
 ```bash
