@@ -25,7 +25,7 @@ class EventObject(object):
 
   def return_formated_event(self):
     f_event = "[%s] [%s] [%s] [%s] [%s] [%s] [%s] %s" % (timestamp(), self.level, self.namespace, self.component, self.ob,
-                                                                                             self.name, self.reason, self.message)
+                                                         self.name, self.reason, self.message)
     return f_event
 
 def timestamp():
