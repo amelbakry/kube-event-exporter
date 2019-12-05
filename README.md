@@ -37,3 +37,10 @@ This Application will listen to live events from the api server and publish them
           reason: ["Started", "Created", "Scheduled", "Pulling", "BackOff", "Pulled"]
           component: ["kube-dns", "kubelet"]
 ```
+
+#### Example of "Reason" in Scalyr:
+ 
+<p align="center">
+<img src="img/events.png" alt="events" title="events" />
+</p>
+
