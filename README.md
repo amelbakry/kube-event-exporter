@@ -1,7 +1,7 @@
 # Kubernetes Event Exporter:
 
 Kubernetes events are stored in the apiserver on master. To avoid filling up master’s disk, a retention policy is enforced: events are removed one hour after the last occurrence.
-This Application will listen to live events from the api server and publish them to standard output, with logging agent installed, these events can be exported to central logging system like Scalyr in this case.
+This Application will listen to live events from the api server and publish them to standard output, with logging agent/watcher installed Like [kubernetes-log-watcher](https://github.com/zalando-incubator/kubernetes-log-watcher "kubernetes-log-watcher"), these events can be exported to central logging system like Scalyr in this case.
 
 ## How to use it:
 

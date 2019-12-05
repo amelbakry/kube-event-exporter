@@ -7,8 +7,6 @@ import datetime
 import yaml
 import os
 
-import time
-
 AVAILABLE_FIELDS = ["level", "namespace", "component", "ob", "name", "reason", "message"]
 RULES_FILE = "eventRules.yaml"
 
