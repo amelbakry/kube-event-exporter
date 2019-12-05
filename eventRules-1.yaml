@@ -1,0 +1,6 @@
+include:
+      level: "Warning"
+      namespace: ["kube-system"]
+      component: "kube-schedule-scaler"
+      reason: "Unhealthy"
+

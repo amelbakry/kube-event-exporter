@@ -24,8 +24,8 @@ class EventObject(object):
     self.name = name
 
   def return_formated_event(self):
-    f_event = "[%s] [%s] [%s] [%s] [%s] [%s] [%s] %s" % (timestamp(), self.level, self.namespace, self.component, self.ob,
-                                                         self.name, self.reason, self.message)
+    f_event = "[%s] [%s] [%s] [%s] [%s] [%s] [%s] %s" % (timestamp(), self.level, self.namespace,
+                       self.component, self.ob, self.name, self.reason, self.message)
     return f_event
 
 def timestamp():
@@ -45,11 +45,10 @@ def api():
   return v1
 
 def parseyaml(event, attr):
-
-  with open("eventRules.yaml", "r") as f:
-      rules = yaml.safe_load(f)
   conditions = []
   events = set()
+  with open("eventRules.yaml", "r") as f:
+      rules = yaml.safe_load(f)
   for key, value in rules.items():
     if "include" not in rules.keys():
       events.add(event)
@@ -80,7 +79,6 @@ def parseyaml(event, attr):
                             events.remove(event)
   for e in events:
     print(e)
-
 
 
 def main():
