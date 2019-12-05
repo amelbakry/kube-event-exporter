@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: kube-event-exporter
+rules:
+- apiGroups: [""]
+  resources: ["pods", "namespaces"]
+  verbs: ["get", "watch", "list"]
+- apiGroups: ["extensions", "apps"]
+  resources: ["deployments", "statefulsets"]
+  verbs: ["get", "watch", "list", "update", "patch"]
+- apiGroups: [""]
+  resources: ["namespaces"]
+  verbs: ["get","list"]
+- apiGroups: ["zalando.org"]
+  resources: ["stackset", "stack"]
+  verbs: ["get","list", "watch", "update", "patch"]
+
+  
