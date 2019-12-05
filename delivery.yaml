@@ -1,0 +1,45 @@
+version: "2017-09-20"
+pipeline:
+  - id: build
+    type: script
+    desc: "Build and push the image #{CDP_SOURCE_BRANCH}"
+    when:
+      branch:
+        exclude: [hotfix]
+    commands:
+    - desc: Install dependencies
+      cmd: |
+        curl -fLOsS https://delivery.cloud.zalando.com/utils/ensure-docker && sh ensure-docker && rm ensure-docker
+        cp /etc/ssl/certs/ca-certificates.crt .
+        cp /etc/resolv.conf .
+    - desc: Build the image
+      cmd: |
+        IMAGE=pierone.stups.zalan.do/loungesre/event-exporter:${CDP_BUILD_VERSION}
+        docker build  -t $IMAGE .
+        docker push $IMAGE
+  - id: Staging
+    type: process
+    desc: "Deployment z for Lounge Test Cluster"
+    target: lounge-test
+    process: microservice_standard_deployment
+    config:
+      apply_permanent_resources:
+        env:
+          APPLICATION: "event-exporter"
+          REPLICAS: "1"
+          IMAGE: "pierone.stups.zalan.do/loungesre/event-exporter:#{CDP_BUILD_VERSION}"
+
+  - id: Production
+    type: process
+    desc: "Deployment Event Exporter to Lounge Prod Cluster"
+    requires_human_approval: true
+    when:
+      branch: master
+    target: zlounge
+    process: microservice_standard_deployment
+    config:
+      apply_permanent_resources:
+        env:
+          application: "event-exporter"
+          replicas: "1"
+          IMAGE: "pierone.stups.zalan.do/loungesre/event-exporter:#{CDP_BUILD_VERSION}"

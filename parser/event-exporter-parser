@@ -1,0 +1,22 @@
+{
+  // specify a time zone if the timestamps in your log are not in GMT
+  // timezone: "GMT-0800"
+ 
+  formats: [
+    {
+      format: "\\{\"log\":\"\\[$timestamp$\\]\\s\\[$Level$\\]\\s\\[$Namespace$\\]\\s\\[$Component$\\]\\s\\[$Object$\\]\\s\\[$Name$\\]\\s\\[$Reason$\\]$Message$\\\\n"
+    }
+    {
+    format: "${parse=json}$"
+    rewrites: [
+        {
+          input:   "time",
+          output:  "timestamp",
+          match:   "(.*)",
+          replace: "$1"
+        }
+      ]
+    }
+  ]
+}
+
