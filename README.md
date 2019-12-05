@@ -21,15 +21,18 @@ This Application will listen to live events from the api server and publish them
    In the value field, you can use string or a list
   - Examples:
     - Include means include only
-
-      ```include:
+```
+      include:
              level: "Warning"
              namespace: ["kube-system"]
              component: "kube-schedule-scaler"
-             reason: "Unhealthy"```
+             reason: "Unhealthy"
+```
 
     - Exclude
-      ```exclude:
+      ```
+         exclude:
              namespace: ["acquire", "bhennessy"]
              reason: ["Started", "Created", "Scheduled", "Pulling", "BackOff", "Pulled"]
-             component: ["kube-dns", "kubelet"]```
+             component: ["kube-dns", "kubelet"]
+```
