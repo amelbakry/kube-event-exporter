@@ -23,7 +23,7 @@ This Application will listen to live events from the api server and publish them
    In the value field, you can use string or a list
   - Examples:
     - Include means include only
-```
+```bash
       include:
              level: "Warning"
              namespace: ["kube-system"]
@@ -34,7 +34,7 @@ This Application will listen to live events from the api server and publish them
     - Exclude
 
 
-```
+```bash
          exclude:
              namespace: ["acquire", "bhennessy"]
              reason: ["Started", "Created", "Scheduled", "Pulling", "BackOff", "Pulled"]
