@@ -33,6 +33,7 @@ This Application will listen to live events from the api server and publish them
 
     - Exclude
 
+
 ```
          exclude:
              namespace: ["acquire", "bhennessy"]
