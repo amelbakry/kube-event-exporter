@@ -25,16 +25,16 @@ This Application will listen to live events from the api server and publish them
     - Include means include only
 ```bash
       include:
-             level: "Warning"
-             namespace: ["kube-system"]
-             component: "kube-schedule-scaler"
-             reason: "Unhealthy"
+          level: "Warning"
+          namespace: ["kube-system"]
+          component: "kube-schedule-scaler"
+          reason: "Unhealthy"
 ```
-  - Exclude
+    - Exclude
 
 ```bash
-         exclude:
-             namespace: ["acquire", "bhennessy"]
-             reason: ["Started", "Created", "Scheduled", "Pulling", "BackOff", "Pulled"]
-             component: ["kube-dns", "kubelet"]
+      exclude:
+          namespace: ["acquire", "bhennessy"]
+          reason: ["Started", "Created", "Scheduled", "Pulling", "BackOff", "Pulled"]
+          component: ["kube-dns", "kubelet"]
 ```
