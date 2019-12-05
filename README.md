@@ -31,8 +31,6 @@ This Application will listen to live events from the api server and publish them
           reason: "Unhealthy"
 ```
     - Exclude
-
-
 ```bash
       exclude:
           namespace: ["acquire", "bhennessy"]
