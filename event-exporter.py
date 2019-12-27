@@ -10,16 +10,15 @@ import os
 AVAILABLE_FIELDS = ["level", "namespace", "component", "ob", "name", "reason", "message"]
 RULES_FILE = "eventRules.yaml"
 
-class EventObject(object):
+class Event(object):
+  _fields = []
+  def __init__(self, *args):
+    for name, val in zip(self._fields, args):
+      setattr(self, name, val)
 
-  def __init__(self, level, namespace, component, ob, name, reason, message):
-    self.level = level
-    self.namespace = namespace
-    self.component = component
-    self.ob = ob
-    self.reason = reason
-    self.message = message
-    self.name = name
+
+class EventObject(Event):
+  _fields = AVAILABLE_FIELDS
 
   def return_formated_event(self):
     f_event = "[%s] [%s] [%s] [%s] [%s] [%s] [%s] %s" % (timestamp(), self.level, self.namespace,
